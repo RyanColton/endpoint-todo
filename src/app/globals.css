@@ -5,13 +5,10 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --headerBG: #383E54;
+  --todo-base: #C4C4C433;
+  --todo-complete: #00FF0033;
+  --todo-overdue: #FF000033;
 }
 
 body {
