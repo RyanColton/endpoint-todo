@@ -13,9 +13,9 @@ export default async function Home() {
     console.error(e);
     return <div>Error fetching todo data</div>
   }
-  
+
   return (
-    <TodoProvider value={todoData}>
+    <TodoProvider data={todoData}>
       <Header />
       <TodoList />
     </TodoProvider>

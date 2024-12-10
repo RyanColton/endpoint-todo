@@ -1,5 +1,5 @@
 "use client"
-import { createContext, useContext } from 'react'
+import { createContext, useContext, useState } from 'react'
 
 export type TodoItem = {
     id: string;
@@ -10,16 +10,35 @@ export type TodoItem = {
     dueDate: string;
 }
 
-type TodoProviderProps = {
-    children?: React.ReactNode;
-    value: TodoItem[] | null;
+type TodoContext = {
+    todoData?: TodoItem[] | null;
+    updateTodoData: (data: TodoItem) => void;
 }
 
-const TodoContext = createContext<TodoItem[] | null>(null);
+type TodoProviderProps = {
+    children: React.ReactNode;
+    data: TodoItem[];
+}
 
-export function TodoProvider({ children, value } : TodoProviderProps) {
+const TodoContext = createContext<Partial<TodoContext>>({});
+
+export function TodoProvider({ children, data } : TodoProviderProps) {
+    const [todoData, setTodoData] = useState(data || []);
+    //
+    const updateTodoData = (newTodoItem: TodoItem) => {
+        if (!todoData.find((todo) => todo.id === newTodoItem.id)) {
+            setTodoData((prevTodos) => [...prevTodos, newTodoItem]);
+            return
+        }
+        setTodoData((prevTodos) => prevTodos.map((todo) => {
+            if (todo.id === newTodoItem.id) {
+                return { ...todo, ...newTodoItem }
+            }
+            return todo;
+        }));
+    };
     return (
-        <TodoContext.Provider value={value}>
+        <TodoContext.Provider value={{ todoData, updateTodoData }}>
             {children}
         </TodoContext.Provider>
     )

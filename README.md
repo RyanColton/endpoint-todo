@@ -9,12 +9,13 @@ yarn
 yarn build
 ```
 
-Second, replace the value of TODO_API_KEY in .env.local with the actual API key needed for the mock API.
+Second, replace the value of TODO_API_KEY and NEXT_PUBLIC_TODO_API_KEY in .env with the actual API key needed for the mock API.
 
-Third, run the development server:
+
+Third, run the application:
 
 ```bash
-yarn dev
+yarn start
 ```
 
 Technologies Used:
