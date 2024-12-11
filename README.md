@@ -37,5 +37,5 @@ yarn test
 
 Technologies Used:
 I used create-next-app with tailwind CSS for the base of the application, definitely not required for this small of an application, but mirrors common technologies used in a full production application. I also like the DX provided by NextJs and decided to bring in TailwindCSS for speed of development of this application, not necessarily my first choice (if any) for css extensions.
-Jest and React Testing Library were added and very basic tests were added, much more could have been done in this area to improve coverage. Better testing leveraging more features of Testing Library would be ideal over more snapshot tests.
+Jest and React Testing Library were added and very basic tests were added, much more could have been done in this area to improve coverage. Better testing, leveraging more features of Testing Library, would be ideal over utilizing snapshot tests. E2E tests were not implemented in this assessment.
  
