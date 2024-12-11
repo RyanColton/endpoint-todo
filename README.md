@@ -18,6 +18,8 @@ yarn build
 yarn start
 ```
 
+YOu should now be able to see the app at http://localhost:3000
+
 Some basic tests were added as well, which can be seen by running:
 ```bash
 yarn test
