@@ -4,9 +4,9 @@ import { useTodoContext, type TodoItem as TodoItemType } from "../TodoProvider";
 import { getIsOverdue } from "../utils/getIsOverdue";
 import { getTodoBGColor } from "../utils/getTodoBGColor";
 
-export default function TodoItem({ todo }: { todo: TodoItemType}) {
+export default function TodoItem({ item }: { item: TodoItemType}) {
     const [isUpdating, setIsUpdating] = useState(false);
-    const { id, description, isComplete, dueDate } = todo;
+    const { id, description, isComplete, dueDate } = item;
     const { updateTodoData } = useTodoContext()
     const isOverdue = useMemo(() => getIsOverdue(dueDate), [dueDate]);
     const displayDate = useMemo(() => new Date(dueDate).toLocaleDateString(), [dueDate]);
@@ -17,15 +17,15 @@ export default function TodoItem({ todo }: { todo: TodoItemType}) {
             const res = await patchTodoList(id, { isComplete: true });
             const parsedResponse = await res.json();
             if (parsedResponse.status === 'success') {
-                updateTodoData!({...todo, isComplete: true})
+                updateTodoData!({...item, isComplete: true})
                 setIsUpdating(false);
             }
         }
     }
     return (
-        <div className={`h-9.5 w-full min-w-72 max-w-[33.33%] mb-2 p-2 flex items-center justify-between ${backgroundColor}${isUpdating ? ' animate-pulse' : ''}`}>
+        <div data-testid={`item-${id}`} className={`h-9.5 w-full min-w-72 max-w-[33.33%] mb-2 p-2 flex items-center justify-between ${backgroundColor}${isUpdating ? ' animate-pulse' : ''}`}>
             <div className="flex items-center">
-                <input onChange={setAsComplete} className={`w-4 h-4 mx-1 accent-black${isComplete ? ' pointer-events-none' : ''}`} type="checkbox" checked={isComplete} />
+                <input data-testid={`item-${id}-checkbox`} onChange={setAsComplete} className={`w-4 h-4 mx-1 accent-black${isComplete ? ' pointer-events-none' : ''}`} type="checkbox" checked={isComplete} />
                 <p>{description}</p>
             </div>
             {dueDate && (

@@ -22,7 +22,6 @@ export const patchTodoList = (id: string, body: object) => {
         },
         body,
     }
-    console.log(options);
     return fetch(`https://b0f179aa-a791-47b5-a7ca-5585ba9e3642.mock.pstmn.io/patch/${id}`, options)
 };
 

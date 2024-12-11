@@ -22,7 +22,7 @@ export default function TodoList() {
       <div className="flex flex-col justify-center items-center p-2">
         {listToRender?.length ? (
           <>
-            {listToRender?.map((todo) => <TodoItem key={todo.id} todo={todo} />)}
+            {listToRender?.map((todo) => <TodoItem key={todo.id} item={todo} />)}
           </>
     ): <SkeletonLoader />}
       </div>
