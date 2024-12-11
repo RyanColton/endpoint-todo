@@ -2,19 +2,19 @@
 
 Hello! Welcome to my application. Here are the inital steps to get the app up and running locally:
 
-First, install libraries and run intial build
+First, clone repository and install libraries
 
 ```bash
 yarn
-yarn build
 ```
 
 Second, replace the value of TODO_API_KEY and NEXT_PUBLIC_TODO_API_KEY in .env with the actual API key needed for the mock API.
 
 
-Third, run the application:
+Third, build the app and run the application:
 
 ```bash
+yarn build
 yarn start
 ```
 
