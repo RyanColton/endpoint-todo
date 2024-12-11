@@ -1,4 +1,4 @@
-export const getIsOverdue = (dueDate: string) => {
+export const getIsOverdue = (dueDate?: string) => {
     if (!dueDate) {
         return false;
     }

@@ -13,6 +13,7 @@ export default async function Home() {
     console.error(e);
     return <div>Error fetching todo data</div>
   }
+  console.log(todoData);
 
   return (
     <TodoProvider data={todoData}>
