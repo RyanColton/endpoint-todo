@@ -19,12 +19,12 @@ describe('TodoItem', () => {
         }
 
         const user = userEvent.setup();
-        const { findByTestId, findByRole, container  } = await render(
+        const { findByTestId, findByRole } = await render(
           <TodoProvider data={[]}>
             <TodoItem item={todoItem} />
           </TodoProvider>
         );
-        let component = await findByTestId('item-6')
+        const component = await findByTestId('item-6')
         expect(component).toBeTruthy();
 
         // Clicking checkbox will properly return simulated api call
