@@ -17,7 +17,6 @@ export default function TodoList() {
     const completedItems: TodoItemType[] = useMemo(() => todoData?.filter((i) => i.isComplete).sort((a, b) => a?.dueDate?.localeCompare(b?.dueDate)) || [], [todoData]);
     const sortedList: TodoItemType[] = useMemo(() => todoData?.filter((i) => !i.isComplete).sort((a, b) => a?.dueDate?.localeCompare(b?.dueDate)) || [], [todoData]);
     const listToRender: TodoItemType[] = useMemo(() => ([] as TodoItemType[]).concat(sortedList).concat(completedItems), [sortedList, completedItems])
-    console.log(listToRender);
     return (
       <div className="flex flex-col justify-center items-center p-2">
         {listToRender?.length ? (
